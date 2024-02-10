@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:finwise/auth/auth_provider.dart';
 import 'package:finwise/auth/auth_state.dart';
 import 'package:flutter/material.dart';
@@ -9,11 +11,13 @@ class AuthScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    log(ref.watch(authProvider).asData?.value.toString() ?? 'No data');
     final mobileNumberController = useTextEditingController();
     final otpController = useTextEditingController();
     final userIdController = useTextEditingController();
     final authState = ref.watch(authProvider);
-    if (authState == AuthState.authenticated) {
+    ref.read(authProvider.notifier).checkAuth();
+    if (authState.value == AuthState.authenticated) {
       return const Scaffold(
         body: Center(
           child: Text('Authenticated!}'),

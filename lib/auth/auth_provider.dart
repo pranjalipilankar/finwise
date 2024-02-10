@@ -9,6 +9,17 @@ final authProvider =
     AsyncNotifierProvider<AuthNotifier, AuthState>(AuthNotifier.new);
 
 class AuthNotifier extends AsyncNotifier<AuthState> {
+  Future<void> checkAuth() async {
+    final account = ref.read(accountProvider);
+    final sessions = await account.getSession(sessionId: 'current');
+    if (sessions.current) {
+      state = const AsyncData(AuthState.authenticated);
+    } else {
+      state = const AsyncData(AuthState.unauthenticated);
+    }
+    log('Auth state: $state');
+  }
+
   Future<String> sendOTP(String number) async {
     final account = ref.read(accountProvider);
     final sessionToken = await account.createPhoneSession(
