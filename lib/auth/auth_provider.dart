@@ -2,16 +2,15 @@ import 'dart:developer';
 
 import 'package:appwrite/appwrite.dart';
 import 'package:finwise/auth/auth_state.dart';
-import 'package:finwise/providers/client_provider.dart';
+import 'package:finwise/providers/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final authProvider =
-    NotifierProvider<AuthNotifier, AuthState>(AuthNotifier.new);
+    AsyncNotifierProvider<AuthNotifier, AuthState>(AuthNotifier.new);
 
-class AuthNotifier extends Notifier<AuthState> {
+class AuthNotifier extends AsyncNotifier<AuthState> {
   Future<String> sendOTP(String number) async {
-    final client = ref.read(clientProvider);
-    final account = Account(client);
+    final account = ref.read(accountProvider);
     final sessionToken = await account.createPhoneSession(
       userId: ID.unique(),
       phone: number,
@@ -22,21 +21,26 @@ class AuthNotifier extends Notifier<AuthState> {
 
   void loginWithOTP(String userId, String otp) async {
     try {
-      final client = ref.read(clientProvider);
-      final account = Account(client);
+      final account = ref.read(accountProvider);
       final session = await account.updatePhoneSession(
         userId: userId,
         secret: otp,
       );
 
       if (session.current) {
-        state = AuthState.authenticated;
+        state = const AsyncData(AuthState.authenticated);
       } else {
-        state = AuthState.unauthenticated;
+        state = const AsyncData(AuthState.unauthenticated);
       }
     } on Exception catch (e) {
       log('Exception: $e');
     }
+  }
+
+  Future<void> logout() async {
+    final account = ref.read(accountProvider);
+    await account.deleteSession(sessionId: 'current');
+    state = const AsyncData(AuthState.unauthenticated);
   }
 
   @override
