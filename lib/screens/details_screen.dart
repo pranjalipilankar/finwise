@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:finwise/screens/chatbot/chat_screen.dart';
 
 class UserInfoPage extends StatefulWidget {
   const UserInfoPage({super.key});
@@ -96,8 +97,12 @@ class _UserInfoPageState extends State<UserInfoPage> {
             const SizedBox(height: 20.0),
             ElevatedButton(
               onPressed: () {
-                // Submit button pressed, process the collected information
-                // e.g., suggest government schemes
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ChatScreen(),
+                  ),
+                );
               },
               child: const Text('Submit'),
             ),

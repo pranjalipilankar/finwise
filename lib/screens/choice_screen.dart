@@ -1,6 +1,7 @@
 import 'package:finwise/screens/goals_screen.dart';
 import 'package:finwise/screens/info_screen.dart';
 import 'package:finwise/screens/details_screen.dart';
+import 'package:finwise/screens/chatbot/chat_screen.dart';
 import 'package:flutter/material.dart';
 
 class ChoiceScreen extends StatelessWidget {
@@ -36,7 +37,7 @@ class ChoiceScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const UserInfoPage()),
+                  MaterialPageRoute(builder: (context) => const ChatScreen()),
                 );
               },
               style: ElevatedButton.styleFrom(
