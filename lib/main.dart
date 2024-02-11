@@ -1,13 +1,8 @@
-import 'package:finwise/screens/auth/otp_page.dart';
-import 'package:finwise/screens/auth/signup_page.dart';
 import 'package:flutter/material.dart';
-import 'package:finwise/screens/auth/login_page.dart';
-import 'package:finwise/screens/intro/select_language.dart';
 import 'package:finwise/screens/intro/intro_page.dart';
-import 'package:finwise/screens/chatbot/chat_screen.dart';
-import 'package:finwise/screens/activity_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 final theme = ThemeData(
   colorScheme: const ColorScheme.dark().copyWith(
