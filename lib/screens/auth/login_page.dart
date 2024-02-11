@@ -45,7 +45,7 @@ class LoginPage extends HookConsumerWidget {
                       color: Colors.white,
                     ),
                     child: Image.network(
-                      "https://img2.gratispng.com/20180329/rpe/kisspng-computer-icons-google-finance-orkut-icon-design-finance-5abc925a7febc3.012899821522307674524.jpg",
+                      "https://sps.iitmandi.ac.in/images/iitlogo.png",
                     ),
                   ),
                 ),
