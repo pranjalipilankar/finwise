@@ -43,10 +43,12 @@ class _GoalsScreenState extends State<GoalsScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset(
-                    goal.imagePath,
-                    fit: BoxFit.fill
+                  Expanded(
+                    child: Image.asset(
+                      goal.imagePath,
+                      fit: BoxFit.fill
                     ),
+                  ),
                   const SizedBox(height: 10),
                   Text(goal.title),
                 ],
