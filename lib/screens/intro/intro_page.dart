@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:finwise/screens/intro/select_language.dart';
 
 class IntroPage extends StatelessWidget {
   const IntroPage({super.key});
@@ -21,7 +22,7 @@ class IntroPage extends StatelessWidget {
                   buildLogo(size),
                   buildTitle(size),
                   buildTnC(context),
-                  buildButton(size),
+                  buildButton(size, context),
                 ],
               ),
             ),
@@ -139,10 +140,15 @@ class IntroPage extends StatelessWidget {
     );
   }
 
-  Widget buildButton(Size size) {
+  Widget buildButton(Size size, BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print('hi');
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => LanguagePage(),
+          ),
+        );
       },
       child: Padding(
         padding: const EdgeInsets.only(bottom: 100.0),

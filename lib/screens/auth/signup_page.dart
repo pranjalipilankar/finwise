@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:finwise/screens/details_screen.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -30,8 +31,7 @@ class SignUpPageState extends State<SignUpPage> {
       lastDate: DateTime.now(),
     );
     if (pickedDate != null) {
-      final DateFormat formatter =
-      DateFormat('yyyy-MM-dd');
+      final DateFormat formatter = DateFormat('yyyy-MM-dd');
       _dobController.text = formatter.format(pickedDate);
     }
   }
@@ -41,10 +41,10 @@ class SignUpPageState extends State<SignUpPage> {
   Future pickImage() async {
     try {
       final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-      if(image == null) return;
+      if (image == null) return;
       final imageTemp = File(image.path);
       setState(() => this.image = imageTemp);
-    } on PlatformException catch(e) {
+    } on PlatformException catch (e) {
       print('Failed to pick image: $e');
     }
   }
@@ -135,10 +135,13 @@ class SignUpPageState extends State<SignUpPage> {
               ),
               const SizedBox(height: 20.0),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => UserInfoPage()));
+                },
                 style: ButtonStyle(
                   backgroundColor:
-                  MaterialStateProperty.all(Colors.grey.shade800),
+                      MaterialStateProperty.all(Colors.grey.shade800),
                   textStyle: MaterialStateProperty.all(
                       const TextStyle(color: Colors.white)),
                 ),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:finwise/screens/auth/otp_page.dart';
+import 'package:finwise/screens/auth/signup_page.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -47,7 +49,12 @@ class LoginPage extends StatelessWidget {
               // Send OTP Button
               ElevatedButton(
                 onPressed: () {
-                  // Add Login functionality
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const OtpPage(),
+                    ),
+                  );
                 },
                 child: const Text("Send OTP"),
               ),
@@ -61,7 +68,12 @@ class LoginPage extends StatelessWidget {
                     const Text("Don't have an account?"),
                     TextButton(
                       onPressed: () {
-                        // Add Sign Up navigation
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SignUpPage(),
+                          ),
+                        );
                       },
                       child: const Text("Sign Up"),
                     ),

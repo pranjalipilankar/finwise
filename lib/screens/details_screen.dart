@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:finwise/screens/choice_screen.dart';
+
 class UserInfoPage extends StatefulWidget {
   const UserInfoPage({super.key});
   @override
@@ -95,8 +97,12 @@ class _GoalsScreenState extends State<UserInfoPage> {
             const SizedBox(height: 20.0),
             ElevatedButton(
               onPressed: () {
-                // Submit button pressed, process the collected information
-                // e.g., suggest government schemes
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ChoiceScreen(),
+                  ),
+                );
               },
               child: const Text('Submit'),
             ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:finwise/screens/chatbot/chat_screen.dart';
 
 class InvestmentInfoPage extends StatelessWidget {
   const InvestmentInfoPage({super.key});
@@ -49,7 +50,12 @@ class InvestmentInfoPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const ChatScreen()),
+                  );
+                },
                 child: const Text('Go to Chat Bot'),
               ),
             ),

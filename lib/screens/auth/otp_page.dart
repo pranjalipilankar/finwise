@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
+import 'package:finwise/screens/choice_screen.dart';
 
 class OtpPage extends StatelessWidget {
   const OtpPage({super.key});
@@ -53,6 +54,10 @@ class OtpPage extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   // Add functionality to verify OTP
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const ChoiceScreen()),
+                  );
                 },
                 child: const Text('Verify OTP'),
               ),
