@@ -1,3 +1,4 @@
+import 'package:finwise/screens/activity_screen.dart';
 import 'package:finwise/screens/choice_screen.dart';
 import 'package:finwise/langchain/chatbot_page.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget{
   Widget build(BuildContext context){
     return MaterialApp(
       theme: theme,
-      home: const ChoiceScreen(),
+      home: const ActivityPage(),
       title: 'FinWise App',
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
