@@ -1,4 +1,4 @@
-import 'package:finwise/auth/auth_screen.dart';
+import 'package:finwise/langchain/chatbot_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -7,6 +7,7 @@ void main() {
   runApp(const ProviderScope(
     child: MyApp(),
   ));
+  // conversationTest();
 }
 
 class MyApp extends StatelessWidget {
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const AuthScreen(),
+      home: const ChatBotScreen(),
     );
   }
 }
