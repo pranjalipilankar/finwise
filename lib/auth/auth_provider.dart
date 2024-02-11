@@ -33,12 +33,14 @@ class AuthNotifier extends AsyncNotifier<AuthState> {
   void loginWithOTP(String userId, String otp) async {
     try {
       final account = ref.read(accountProvider);
-      final session = await account.updatePhoneSession(
+      await account.updatePhoneVerification(
         userId: userId,
         secret: otp,
       );
 
-      if (session.current) {
+      final user = await account.get();
+
+      if (user.phoneVerification) {
         state = const AsyncData(AuthState.authenticated);
       } else {
         state = const AsyncData(AuthState.unauthenticated);
