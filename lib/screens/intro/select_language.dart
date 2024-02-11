@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:finwise/screens/auth/login_page.dart';
+import 'package:finwise/auth/auth_screen.dart';
 
 class LanguagePage extends StatefulWidget {
   final List<String> languages = ['English','हिन्दी (Hindi)', 'मराठी (Marathi)', 'गुजराती (Gujarati)',
